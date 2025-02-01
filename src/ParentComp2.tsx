@@ -5,11 +5,14 @@ import { ProductDetail } from './ProductDetail';
 
 export default function ParentComp2() {
     let data;
+    data=Data[0];
    let ID=+(useParams().id);
 
-   data=Data.filter((item)=>{
-    return item.id==ID
-   })
+  for(let i=0;i<Data.length;i++){
+    if(Data[i].id==ID){
+        data=Data[i];    
+    }
+  }
     
 
   return (

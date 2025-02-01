@@ -1,20 +1,8 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 export function ProductDetail({data}) {
-  const[value,setValue]=useState(" ");
-  const param=useParams();
-  const ID=param.id;
-
-  let product;
-  
-
-  for(let i=0;i<data.length;i++){
-      if(data[i].id==ID){
-        product=data[i];
-      }
-  }
-  
+  const[value,setValue]=useState(0);
+ 
 
   function handleChange(){
     setValue(value+1);
@@ -23,12 +11,13 @@ export function ProductDetail({data}) {
   function handleInputChange(event){
     setValue(+(event.target.value));
   }
+  
   return (
     <div className=' w-full '>
-        <img className='w-1/2 h-2/4  object-cover mt-2 ml-2' src={product.imgUrl} alt='image' />
-        <h1>{product.category}</h1>
-        <h2>${product.price}</h2>
-        <p>{product.title}</p>
+        <img className='w-1/2 h-2/4  object-cover mt-2 ml-2' src={data.imgUrl} alt='image' />
+        <h1>{data.category}</h1>
+        <h2>${data.price}</h2>
+        <p>{data.title}</p>
         <input placeholder="Quantity..."value={value} type='number' onChange={handleInputChange}></input>
         <button onClick={handleChange}>Add to cart</button>
     </div>

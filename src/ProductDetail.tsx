@@ -24,8 +24,8 @@ export function ProductDetail({data}) {
     setValue(+(event.target.value));
   }
   return (
-    <div>
-        <img src={product.imgUrl} alt='image' />
+    <div className=' w-full '>
+        <img className='w-1/2 h-2/4  object-cover mt-2 ml-2' src={product.imgUrl} alt='image' />
         <h1>{product.category}</h1>
         <h2>${product.price}</h2>
         <p>{product.title}</p>

@@ -24,8 +24,7 @@ export default function ParentComp({data}) {
 
     switch (sort) {
       case "default":
-      
-        break;
+                break;
       case "price":
         newData.sort((a, b) => a.price - b.price);
         break;
@@ -36,11 +35,11 @@ export default function ParentComp({data}) {
         newData.sort((a, b) => a.gender.localeCompare(b.gender));
         break;
       default:
-       
         break;
     }
     
     data=newData;
+  
        
   return (
     <>

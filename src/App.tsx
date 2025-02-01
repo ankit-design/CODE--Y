@@ -5,7 +5,7 @@ import ParentComp from "./ParentComp";
 import { Route,Routes } from 'react-router-dom';
 import AssignmentPage from './AssignmentPage';
 import DocumentPage from './DocumentPage';
-import { ProductDetail } from "./ProductDetail";
+import ParentComp2 from "./ParentComp2";
 
 
 
@@ -24,7 +24,7 @@ let Data;
     <Route  index path="/ProductList" element={<ParentComp data={Data}/>}></Route>
     <Route path="/assignmentPage" element={<AssignmentPage />}></Route>
     <Route path="/DocumentPage" element={<DocumentPage />}></Route>
-    <Route path="//productDetail/:id" element={<ProductDetail data={Data}/>}></Route>
+    <Route path="//productDetail/:id" element={<ParentComp2 />}></Route>
    </Routes>
 
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Data } from './Data';
 import { ProductList } from './ProductList';
 import SelectBar from './SelectBar';
+import NodataFound from "./NodataFound";
 
 let newData=[];
 
@@ -42,9 +43,12 @@ export default function ParentComp({data}) {
   
        
   return (
-    <>
+    <div  className='flex flex-col  w-full mb-10'>
+    <div className='flex flex-row justify-between'>
     <ProductList handleQueryChange={handleQueryChange} query={query} newData={newData} />
     <SelectBar  handleSortChange={handleSortChange} sort={sort}  />
-    </>
+    </div>
+    {data.length<=0 && <NodataFound /> }
+    </div>
   )
 }

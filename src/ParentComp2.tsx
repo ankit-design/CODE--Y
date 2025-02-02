@@ -10,7 +10,8 @@ export default function ParentComp2() {
 
   for(let i=0;i<Data.length;i++){
     if(Data[i].id==ID){
-        data=Data[i];    
+        data=Data[i];
+        break;    
     }
   }
     

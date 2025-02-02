@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export function ProductDetail({data}) {
   const[value,setValue]=useState(0);
@@ -11,6 +11,12 @@ export function ProductDetail({data}) {
   function handleInputChange(event){
     setValue(+(event.target.value));
   }
+
+  useEffect(()=>{
+    console.log("useEffect action !! ");
+  },[])
+
+ 
   
   return (
     <div className=' w-full '>

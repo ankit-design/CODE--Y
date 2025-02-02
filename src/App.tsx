@@ -10,10 +10,11 @@ import ParentComp2 from "./ParentComp2";
 
 
 
+
 let Data;
  function App() {
 
-  console.log(Data);
+  
 
   return (
     <div>
@@ -21,13 +22,14 @@ let Data;
          <div className="flex flex-row">
      <Sidebar/>
      <Routes>
-    <Route  index path="/ProductList" element={<ParentComp data={Data}/>}></Route>
+    <Route  index  element={<ParentComp data={Data}/>}></Route>
+    <Route  path="/ProductList"  element={<ParentComp data={Data}/>}></Route>
     <Route path="/assignmentPage" element={<AssignmentPage />}></Route>
     <Route path="/DocumentPage" element={<DocumentPage />}></Route>
     <Route path="//productDetail/:id" element={<ParentComp2 />}></Route>
    </Routes>
 
-
+       
     
     </div>  
     </div>                  

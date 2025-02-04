@@ -25,12 +25,12 @@ export default function ParentComp2() {
 
  const ID=+(useParams().id);
 
- console.log(data.length);
+
 
 
  if(data.length>=0){
   for(let i=0;i<data.length;i++){
-    console.log("newdata:-> ",newdata);
+   
     if(data[i].id==ID){
         newdata=data[i];
         break;    

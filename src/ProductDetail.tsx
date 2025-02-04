@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export function ProductDetail({data}) {
   const[value,setValue]=useState(0);
 
-  console.log(data);
+ 
  
 
   function handleChange(){

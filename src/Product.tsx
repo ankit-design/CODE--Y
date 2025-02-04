@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export  function Product({imgUrl,category,title,price,gender,id}) {
+export  function Product({thumbnail,category,title,price,gender,id}) {
   return (
     <div  className='bg-orange-500 mx-4 p-5'>
-        <img width={380} src={imgUrl} alt='img'/>
+        <img width={380} src={thumbnail} alt='img'/>
         <div>{category}</div>
         <div>{title}</div>
         <div>${price}</div>
@@ -15,3 +15,5 @@ export  function Product({imgUrl,category,title,price,gender,id}) {
     </div>
   )
 }
+
+

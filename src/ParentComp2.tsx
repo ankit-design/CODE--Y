@@ -1,22 +1,49 @@
 import React from 'react';
-import { Data } from './Data';
+import { dataProvider } from './Data';
 import { useParams } from 'react-router-dom';
 import { ProductDetail } from './ProductDetail';
+import { useEffect,useState} from 'react';
+import { Product } from './Product';
+
+
 
 export default function ParentComp2() {
-    let data;
-    data=Data[0];
-   let ID=+(useParams().id);
+  const[data,setData]=useState([]);
 
-  for(let i=0;i<Data.length;i++){
-    if(Data[i].id==ID){
-        data=Data[i];
+  let newdata=[];
+
+
+   useEffect  (  ()=>{
+       const fetch = async ()=>{
+         const result = await dataProvider();  
+         setData(result);
+       }
+       fetch();
+     },[])
+     
+
+
+ const ID=+(useParams().id);
+
+ console.log(data.length);
+
+
+ if(data.length>=0){
+  for(let i=0;i<data.length;i++){
+    console.log("newdata:-> ",newdata);
+    if(data[i].id==ID){
+        newdata=data[i];
         break;    
     }
   }
-    
+ }
 
   return (
-      <ProductDetail data={data} />
+    <ProductDetail   data={newdata} />
   )
 }
+
+
+    
+
+ 

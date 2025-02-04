@@ -14,7 +14,7 @@ export function ProductList({query,handleQueryChange,newData}) {
         {newData.map((item)=>{
          return  <Product
           key={item.title+item.price}
-          imgUrl={item.imgUrl}
+          thumbnail={item.thumbnail}
           category={item.category}
           title={item.title}
           price={item.price}

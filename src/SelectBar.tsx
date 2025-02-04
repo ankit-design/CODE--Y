@@ -8,7 +8,7 @@ export default function SelectBar({sort,handleSortChange}) {
   <option value="default">default</option>
   <option value="price">sort by price</option>
   <option value="name">sort by name</option>
-  <option value="gender">sort by gender</option>
+  
 </select>
     </div>
   )

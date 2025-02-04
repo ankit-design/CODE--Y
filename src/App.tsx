@@ -11,7 +11,7 @@ import ParentComp2 from "./ParentComp2";
 
 
 
-let Data;
+
  function App() {
 
   
@@ -22,11 +22,11 @@ let Data;
          <div className="flex flex-row">
      <Sidebar/>
      <Routes>
-    <Route  index  element={<ParentComp data={Data}/>}></Route>
-    <Route  path="/ProductList"  element={<ParentComp data={Data}/>}></Route>
+    <Route  index  element={<ParentComp />}></Route>
+    <Route  path="/ProductList"  element={<ParentComp />}></Route>
     <Route path="/assignmentPage" element={<AssignmentPage />}></Route>
     <Route path="/DocumentPage" element={<DocumentPage />}></Route>
-    <Route path="//productDetail/:id" element={<ParentComp2 />}></Route>
+    <Route path="/productDetail/:id" element={<ParentComp2 />}></Route>
    </Routes>
 
        

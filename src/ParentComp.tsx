@@ -3,6 +3,7 @@ import { dataProvider } from './Data';
 import { ProductList } from './ProductList';
 import SelectBar from './SelectBar';
 import NodataFound from "./NodataFound";
+import LoadingComp from './LoadingComp';
 
 let newData=[];
 let data;
@@ -12,12 +13,14 @@ export default function ParentComp() {
     const [query,setQuery]=useState ('');
     const [sort,setSort]=useState ("default");
     const[Data,setData]=useState([]);
-
+     const[flag,setFlag]=useState(true);
+    
     
      useEffect( ()=>{
       const fetch = async ()=>{
         const result = await dataProvider();
         setData(result);
+        setFlag(false);
       }
       fetch();
     },[])
@@ -51,16 +54,21 @@ export default function ParentComp() {
   data=newData;
  
  
-
+   if(flag){
+    return <LoadingComp />
+   }
     
   
        
   return (
+    
     <div  className='flex flex-col  w-full mb-10'>
-    <div className='flex flex-row justify-between'>
+    <>
+     <div className='flex flex-row justify-between'>
     <ProductList handleQueryChange={handleQueryChange} query={query} newData={data} />
     <SelectBar  handleSortChange={handleSortChange} sort={sort}  />
     </div>
+    </>
     {data.length<=0 && <NodataFound /> }
     </div>
   )

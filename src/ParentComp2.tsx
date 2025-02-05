@@ -5,6 +5,7 @@ import { ProductDetail } from './ProductDetail';
 import { useEffect,useState} from 'react';
 import { Product } from './Product';
 import LoadingComp from './LoadingComp';
+import NodataFound from './NodataFound';
 
 
 
@@ -41,6 +42,12 @@ export default function ParentComp2() {
         break;    
     }
   }
+ }
+
+ if((newdata.length==0)&&flag){
+  return <LoadingComp />
+ }else if ((newdata.length==0)&&flag==false){
+  return <NodataFound />
  }
 
   return (

@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 
 
 
-export function ProductList({query,handleQueryChange,newData}) {
+export function ProductList({newData}) {
   
   
 
-  return (  <div className='flex flex-col'>
-        <input type="text" placeholder='enter to search.....' onChange={handleQueryChange} value={query} className='rounded border-2 border-gray-300 border-solid w-80'/>
-    <div className='flex flex-wrap gap-3'>
+  return (  
+        
+    <div className=' p-10 grid grid-cols-3 max-w-6xl mx-auto gap-4'>
         {newData.map((item)=>{
          return  <Product
           key={item.title+item.price}
@@ -27,7 +27,7 @@ export function ProductList({query,handleQueryChange,newData}) {
       
 
     </div>
-    </div>
+    
   )
 }
 

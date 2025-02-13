@@ -1,39 +1,37 @@
 import React, { useState,useEffect } from 'react';
 import { dataProvider } from './Data';
 import { ProductList } from './ProductList';
-import SelectBar from './SelectBar';
 import NodataFound from "./NodataFound";
 import LoadingComp from './LoadingComp';
 
 let newData=[];
-let data;
+let data=[];
 
 
-export default function ParentComp() {
-    const [query,setQuery]=useState ('');
-    const [sort,setSort]=useState ("default");
+export default function ParentComp({sort,query}) {
+    
     const[Data,setData]=useState([]);
      const[flag,setFlag]=useState(true);
     
     
      useEffect( ()=>{
+     
       const fetch = async ()=>{
-        const result = await dataProvider();
-        setData(result);
-        setFlag(false);
+          await dataProvider()
+        .then((res)=>{
+          setData(res);
+          setFlag(false);
+        })
       }
       fetch();
     },[])
 
-    function handleQueryChange(event){
-       setQuery(event.target.value);
-    }
-
-    function handleSortChange(event){
-      setSort(event.target.value);
-   }
+   
 
    
+   if(flag){
+    return <LoadingComp />
+   }
   
     newData=Data.filter((item)=>{
       return item.title.toLocaleLowerCase().includes(query.toLocaleLowerCase()); 
@@ -54,21 +52,13 @@ export default function ParentComp() {
   data=newData;
  
  
-   if(flag){
-    return <LoadingComp />
-   }
     
   
        
   return (
     
-    <div  className='flex flex-col  w-full mb-10'>
-    <>
-     <div className='flex flex-row justify-between'>
-    <ProductList handleQueryChange={handleQueryChange} query={query} newData={data} />
-    <SelectBar  handleSortChange={handleSortChange} sort={sort}  />
-    </div>
-    </>
+    <div>
+    <ProductList newData={data} />
     {data.length<=0 && <NodataFound /> }
     </div>
   )

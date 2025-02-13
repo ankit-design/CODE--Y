@@ -3,24 +3,27 @@ import { dataProvider } from './Data';
 import { useParams } from 'react-router-dom';
 import { ProductDetail } from './ProductDetail';
 import { useEffect,useState} from 'react';
-import { Product } from './Product';
 import LoadingComp from './LoadingComp';
 import NodataFound from './NodataFound';
 
 
 
-export default function ParentComp2() {
+
+export default function ParentComp2({handleCart}) {
   const[data,setData]=useState([]);
   const[flag,setflag]=useState(true);
 
   let newdata=[];
 
 
-   useEffect  (  ()=>{
+   useEffect  (()=>{
+    
        const fetch = async ()=>{
-         const result = await dataProvider();  
-         setData(result);
-         setflag(false);
+            await dataProvider()
+          .then((res)=>{
+            setData(res);
+            setflag(false);
+          })  
        }
        fetch();
      },[])
@@ -51,7 +54,7 @@ export default function ParentComp2() {
  }
 
   return (
-    <ProductDetail   data={newdata} />
+    <ProductDetail  handleCart={handleCart} data={newdata} />
   )
 }
 

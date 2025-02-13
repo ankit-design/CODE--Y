@@ -1,21 +1,23 @@
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import { HiArrowCircleLeft, HiArrowCircleRight } from 'react-icons/hi';
 import { Link, useParams } from 'react-router-dom';
 
 
-export function ProductDetail({data}) {
-  const[value,setValue]=useState(0);
+export function ProductDetail({data,handleCart}) {
+  const[value,setValue]=useState(1);
   const id=+(useParams().id);
 
- 
+ useEffect(()=>{
+  setValue(1);
+ },[id])
  
 
-  function handleChange(){
-    setValue(value+1);
+  function handleChange(value){
+    handleCart(value,id);       
   }
 
   function handleInputChange(event){
-    setValue(+(event.target.value));
+   return setValue(+(event.target.value));
   }
 
   
@@ -25,7 +27,7 @@ export function ProductDetail({data}) {
 //  }
   
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col w-2/4  '>
            <div className=' w-full  flex flex-row '>
               <Link to="/" >
               <HiArrowCircleLeft className='text-5xl'  />
@@ -35,8 +37,8 @@ export function ProductDetail({data}) {
              <h1>{data.category}</h1>
              <h2>${data.price}</h2>
              <p>{data.title}</p>
-             <input placeholder="Quantity..."value={value} type='number' onChange={handleInputChange} className=' border-solid border-4 mr-2'></input>
-             <button onClick={handleChange} className=' border-solid border-4 ' >Add to cart</button>
+             <input placeholder="Quantity..." value={value} type='number' onChange={handleInputChange} className=' border-solid border-4 mr-2'></input>
+             <button onClick={()=>{handleChange(value)}} className=' border-solid border-4 ' >Add to cart</button>
              <p>{data.description}</p>
              </div>
              </div>

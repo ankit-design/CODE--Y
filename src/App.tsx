@@ -10,7 +10,7 @@ import {SearchOrSortComp} from './SearchOrSortComp'
  function App() {
       const [query,setQuery]=useState ('');
       const [sort,setSort]=useState ("default");
-      const[cartQuantity,setcartQuantity]=useState(0);
+      const[cartQuantity,setCartQuantity]=useState({0:0});
  
    function handleQueryChange(newQueryValue){
          setQuery(newQueryValue);
@@ -21,10 +21,13 @@ import {SearchOrSortComp} from './SearchOrSortComp'
      }
 
     function handleCart(value,id){
-      setcartQuantity
+      const oldCount=cartQuantity[id];
+      setCartQuantity({...cartQuantity,[id]:oldCount+value});
+      console.log(cartQuantity);
     }
+
   
-     let count =4
+     let count = Object.values(cartQuantity).reduce((acc,curr)=>{ acc+cartQuantity[curr]},0);
 
   return (
       <>

@@ -17,7 +17,7 @@ export function ProductDetail({data,handleCart}) {
   }
 
   function handleInputChange(event){
-   return setValue(+(event.target.value));
+    setValue(+(event.target.value));
   }
 
   

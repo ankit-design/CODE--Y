@@ -9,7 +9,7 @@ import NodataFound from './NodataFound';
 
 
 
-export default function ParentComp2({handleCart}) {
+export default function ParentComp2({handleCart,reset}) {
   const[data,setData]=useState([]);
   const[flag,setflag]=useState(true);
 
@@ -54,7 +54,7 @@ export default function ParentComp2({handleCart}) {
  }
 
   return (
-    <ProductDetail  handleCart={handleCart} data={newdata} />
+    <ProductDetail  handleCart={handleCart} data={newdata} reset={reset} />
   )
 }
 

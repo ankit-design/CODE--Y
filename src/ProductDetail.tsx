@@ -3,7 +3,7 @@ import { HiArrowCircleLeft, HiArrowCircleRight } from 'react-icons/hi';
 import { Link, useParams } from 'react-router-dom';
 
 
-export function ProductDetail({data,handleCart}) {
+export function ProductDetail({data,handleCart,reset}) {
   const[value,setValue]=useState(1);
   const id=+(useParams().id);
 
@@ -13,11 +13,15 @@ export function ProductDetail({data,handleCart}) {
  
 
   function handleChange(value){
-    handleCart(value,id);       
+    handleCart(value,id);        
   }
 
   function handleInputChange(event){
     setValue(+(event.target.value));
+  }
+
+  function handleReset(){
+    reset();
   }
 
   
@@ -38,7 +42,8 @@ export function ProductDetail({data,handleCart}) {
              <h2>${data.price}</h2>
              <p>{data.title}</p>
              <input placeholder="Quantity..." value={value} type='number' onChange={handleInputChange} className=' border-solid border-4 mr-2'></input>
-             <button onClick={()=>{handleChange(value)}} className=' border-solid border-4 ' >Add to cart</button>
+             <button onClick={()=>{handleChange(value)}} className=' border-solid border-4 ' >Add to cart </button>
+             <button onClick={()=>{handleReset()}} className='ml-2 border-solid border-4 ' >Reset my cart </button>
              <p>{data.description}</p>
              </div>
              </div>

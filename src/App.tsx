@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import ParentComp2 from "./ParentComp2";
 import { FourOFour } from "./FourOFour";
 import { SearchOrSortComp } from './SearchOrSortComp';
+import CartPage from './CartPage';
 
 function App() {
   const [query, setQuery] = useState('');
@@ -36,7 +37,7 @@ function App() {
     setCount(Object.keys(cartQuantity).reduce((acc, curr) => acc + cartQuantity[curr], 0));
   }, [cartQuantity]);
 
-  console.log("cartQuantity :-> ",cartQuantity);
+  
 
   return (
     <>
@@ -49,6 +50,7 @@ function App() {
             <Route path="/ProductList" element={<ParentComp query={query} sort={sort} />} />
             <Route path="/productDetail/:id" element={<ParentComp2 handleCart={handleCart} reset={reset} />} />
             <Route path="*" element={<FourOFour />} />
+            <Route path="/cartPage" element={<CartPage cartObj={cartQuantity}/>} />
           </Routes>
         </div>
       </div>

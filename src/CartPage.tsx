@@ -1,6 +1,8 @@
 import React ,{ useState,useEffect } from 'react';
 import {dataProvider} from './Data';
 import CartitemDisplayer from './CartitemDisplayer';
+import { HiArrowCircleLeft } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 
 export default function CartPage({cartObj}) {    
   const[currentData,setdata]=useState([]);
@@ -18,26 +20,18 @@ export default function CartPage({cartObj}) {
     })
   },[])
   
-
-
-
-   
-   
    currentData.map((item)=>{
       if (productIDs.has(item.id)){
         totalprice+=item.price;
       }
     })
   
-  
- 
-
-
-  
-  
   return (
     <div>
         <div>
+        <Link to="/" >
+              <HiArrowCircleLeft className='text-5xl'  />
+              </Link>
                {Object.keys(cartObj).map((id)=>{
                 return (
                <CartitemDisplayer data={currentData} id={id} cartObj={cartObj} />)     
